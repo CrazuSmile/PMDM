@@ -25,6 +25,7 @@ fun main() {
     println("Adios")
 }
 
+// Añadir nuevos datos al Array
 fun inputArray(array: Array<Int>): Array<Int> {
     var newArray = array
     while (true) {
@@ -42,6 +43,7 @@ fun inputArray(array: Array<Int>): Array<Int> {
     return newArray
 }
 
+// Comprueba cualos son pares
 fun pair(array: Array<Int>) {
     for (i in array.indices) {
         if (array[i] % 2f == 0f) {
