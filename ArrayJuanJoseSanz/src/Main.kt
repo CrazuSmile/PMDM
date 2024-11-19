@@ -43,7 +43,7 @@ fun inputArray(array: Array<Int>): Array<Int> {
     return newArray
 }
 
-// Comprueba cualos son pares
+// Comprueba cuales son pares
 fun pair(array: Array<Int>) {
     for (i in array.indices) {
         if (array[i] % 2f == 0f) {
