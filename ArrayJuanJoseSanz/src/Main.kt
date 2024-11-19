@@ -1,5 +1,5 @@
 /*
- * Progama de matrices del ejercicio 5
+ * Programa de matrices para mostrar los pares añadidos por teclado del ejercicio 5
  * @author Juan Jose Sanz
  * @version 1
  */
