@@ -1,7 +1,7 @@
 /*
 * Ejercicio para juego de un dado
 * @author Juan Jose Sanz
-* @version 2
+* @version 2.1
 */
 
 fun main() {
@@ -23,6 +23,7 @@ fun main() {
     var i = 1
     println("En la ${i}ª tirada sale un $previousThrow")
     var checkThrow = 0
+
     do {
         i++
         var answer: Int
@@ -46,15 +47,16 @@ fun main() {
             }
         } while (true)
         when (answer) {
-            1 -> checkThrow = comprobarMayor(newThrow, previousThrow, i)
-            2 -> checkThrow = comprobarMenor(newThrow, previousThrow, i)
+            1 -> checkThrow = checkGreater(newThrow, previousThrow, i)
+            2 -> checkThrow = checkLower(newThrow, previousThrow, i)
         }
         previousThrow = checkThrow
     } while (checkThrow != 0)
     println("Adios")
 }
 
-fun comprobarMayor(newThrow: Int, previousThrow: Int, i: Int): Int {
+// Funcion para comprobar si el lanzamiento nuevo es mayor que el anterior
+fun checkGreater(newThrow: Int, previousThrow: Int, i: Int): Int {
     var originalThrow: Int = previousThrow
     if (newThrow > originalThrow) {
         originalThrow = newThrow
@@ -69,7 +71,8 @@ fun comprobarMayor(newThrow: Int, previousThrow: Int, i: Int): Int {
     return originalThrow
 }
 
-fun comprobarMenor(newThrow: Int, previousThrow: Int, i: Int): Int {
+// Funcion para comprobar si el lanzamiento nuevo es menor que el anterior
+fun checkLower(newThrow: Int, previousThrow: Int, i: Int): Int {
     var originalThrow: Int = previousThrow
     if (newThrow < originalThrow) {
         originalThrow = newThrow
