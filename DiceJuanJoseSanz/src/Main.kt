@@ -1,7 +1,7 @@
 /*
 * Ejercicio para juego de un dado
 * @author Juan Jose Sanz
-* @version 1
+* @version 2
 */
 
 fun main() {
@@ -18,20 +18,68 @@ fun main() {
         }
     } while (true)
 
-    var dice = Dice(nFaces)
-
+    val dice = Dice(nFaces)
+    var previousThrow = dice.throwDice()
+    var i = 1
+    println("En la ${i}ª tirada sale un $previousThrow")
+    var checkThrow = 0
     do {
-        var i: Int = 1
-        println("En la ${i}ª tirada sale un ${dice.throwDice()}")
         i++
+        var answer: Int
+        var newThrow = dice.throwDice()
+        if (newThrow == previousThrow) {
+            newThrow = dice.throwDice()
+        }
+        do {
+            try {
+                println(
+                    """|¿La siguiente tirada sera?
+                    | 1.- Mayor
+                    | 2.- Menor
+                    |Respuesta: 
+                    """.trimMargin()
+                )
+                answer = readln().toInt()
+                if (answer < 1 || answer > 2) println("No es un valor aceptable") else break
+            } catch (e: IllegalArgumentException) {
+                println("No es un valor valido: ${e.message}")
+            }
+        } while (true)
+        when (answer) {
+            1 -> checkThrow = comprobarMayor(newThrow, previousThrow, i)
+            2 -> checkThrow = comprobarMenor(newThrow, previousThrow, i)
+        }
+        previousThrow = checkThrow
+    } while (checkThrow != 0)
+    println("Adios")
+}
 
-        println("""|¿La siguiente tirada sera?
-            | 1.- Mayor
-            | 2.- Menor
-            |Respuesta: 
-        """.trimMargin())
+fun comprobarMayor(newThrow: Int, previousThrow: Int, i: Int): Int {
+    var originalThrow: Int = previousThrow
+    if (newThrow > originalThrow) {
+        originalThrow = newThrow
+        println("En la ${i}ª tirada sale un $originalThrow")
+        println("Correcto")
+    } else {
+        originalThrow = newThrow
+        println("En la ${i}ª tirada sale un $originalThrow")
+        println("Has fallado")
+        return 0
+    }
+    return originalThrow
+}
 
-
-    } while ()
-
+fun comprobarMenor(newThrow: Int, previousThrow: Int, i: Int): Int {
+    var originalThrow: Int = previousThrow
+    if (newThrow < originalThrow) {
+        originalThrow = newThrow
+        println("En la ${i}ª tirada sale un $originalThrow")
+        println("Correcto")
+    } else {
+        originalThrow = newThrow
+        println("En la ${i}ª tirada sale un $originalThrow")
+        println("Has fallado")
+        return 0
+    }
+    return originalThrow
 }
