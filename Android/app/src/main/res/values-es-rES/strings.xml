@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="textClickButton">¡Pulsame!</string>
+    <string name="text_N_times">Has hecho clic %1$s veces</string>
+</resources>

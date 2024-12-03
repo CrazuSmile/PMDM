@@ -21,6 +21,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -59,7 +60,7 @@ fun Content(modifier: Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Has hecho clic $times veces",
+            text = stringResource(R.string.text_N_times, times),
             fontSize = 25.sp
         )
         Spacer(modifier = Modifier.height(20.dp))
@@ -69,7 +70,7 @@ fun Content(modifier: Modifier) {
             }
         ) {
             Text(
-                text = "¡Pulsame!",
+                text = stringResource(id = R.string.textClickButton),
                 fontSize = 30.sp,
                 modifier = Modifier.padding(16.dp)
             )

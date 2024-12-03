@@ -22,7 +22,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.juanjosesanz.satisticsjuanjose.ui.theme.SatisticsJuanJoseTheme
@@ -49,6 +48,15 @@ fun Counters(modifier: Modifier) {
     var scooter by rememberSaveable { mutableIntStateOf(0) }
     var car by rememberSaveable { mutableIntStateOf(0) }
 
+    fun calculatePercent(count: Int): String {
+        return if (total > 0) {
+            String.format("%.2f", (count.toFloat() / total) * 100)  + "%"
+        } else {
+            "%0"
+        }
+    }
+
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -73,6 +81,8 @@ fun Counters(modifier: Modifier) {
                         total = 0
                         person = 0
                         bicycle = 0
+                        scooter = 0
+                        car = 0
                     }
                 ) {
                     Text(
@@ -87,10 +97,10 @@ fun Counters(modifier: Modifier) {
                     fontSize = 23.sp
                 )
                 Text(
-                    text = """|Personas: 0
-                        |Bicicletas: 0
-                        |Patienetes: 0
-                        |Coches: 0""".trimMargin()
+                    text = """|Personas: ${calculatePercent(person)} %
+                        |Bicicletas: ${calculatePercent(bicycle)} %
+                        |Patienetes: ${calculatePercent(scooter)} %
+                        |Coches: ${calculatePercent(car)} %""".trimMargin()
                 )
             }
         }
@@ -134,7 +144,7 @@ fun Counters(modifier: Modifier) {
                     Row {
                         Button(
                             onClick = {
-                                total -= person
+                                if (total > 0) total -= person
                                 person = 0
                             }
                         ) {
@@ -187,7 +197,7 @@ fun Counters(modifier: Modifier) {
                     Row {
                         Button(
                             onClick = {
-                                total -= bicycle
+                                if (total > 0) total -= bicycle
                                 bicycle = 0
                             }
                         ) {
@@ -209,7 +219,7 @@ fun Counters(modifier: Modifier) {
             ) {
 
                 Text(
-                    text = "Patinetes: 0",
+                    text = "Patinetes: $scooter",
                     fontSize = 23.sp
                 )
                 Column {
@@ -242,7 +252,8 @@ fun Counters(modifier: Modifier) {
                     Row {
                         Button(
                             onClick = {
-
+                                if (total > 0) total -= scooter
+                                scooter = 0
                             }
                         ) {
                             Text(
@@ -261,14 +272,15 @@ fun Counters(modifier: Modifier) {
             ) {
 
                 Text(
-                    text = "Coches: 0",
+                    text = "Coches: $car",
                     fontSize = 23.sp
                 )
                 Column {
                     Row {
                         Button(
                             onClick = {
-
+                                car++
+                                total++
                             }
                         ) {
                             Text(
@@ -277,7 +289,10 @@ fun Counters(modifier: Modifier) {
                         }
                         Button(
                             onClick = {
-
+                                if (car > 0) {
+                                    car -= 1
+                                    if (total > 0) total -= 1
+                                }
                             }
                         ) {
                             Text(
@@ -290,7 +305,8 @@ fun Counters(modifier: Modifier) {
                     Row {
                         Button(
                             onClick = {
-
+                                if (total > 0) total -= car
+                                car = 0
                             }
                         ) {
                             Text(
