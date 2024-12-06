@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +23,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.juanjosesanz.satisticsjuanjose.ui.theme.SatisticsJuanJoseTheme
@@ -47,6 +49,10 @@ fun Counters(modifier: Modifier) {
     var bicycle by rememberSaveable { mutableIntStateOf(0) }
     var scooter by rememberSaveable { mutableIntStateOf(0) }
     var car by rememberSaveable { mutableIntStateOf(0) }
+    val green = Color(0xFF8BC34A)
+    val black = Color(0xFF000000)
+    val red = Color(0xFFF44336)
+    val gold = Color(0xFFFDB500)
 
     fun calculatePercent(count: Int): String {
         return if (total > 0) {
@@ -120,7 +126,11 @@ fun Counters(modifier: Modifier) {
                             onClick = {
                                 person++
                                 total++
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = green,
+                                contentColor = black,
+                            )
                         ) {
                             Text(
                                 text = "+1"
@@ -132,7 +142,11 @@ fun Counters(modifier: Modifier) {
                                     person -= 1
                                     if (total > 0) total -= 1
                                 }
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = red,
+                                contentColor = black
+                            )
                         ) {
                             Text(
                                 text = "-1"
@@ -173,7 +187,12 @@ fun Counters(modifier: Modifier) {
                             onClick = {
                                 bicycle++
                                 total++
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = green,
+                                contentColor = black,
+                            )
+
                         ) {
                             Text(
                                 text = "+1"
@@ -185,7 +204,11 @@ fun Counters(modifier: Modifier) {
                                     bicycle -= 1
                                     if (total > 0) total -= 1
                                 }
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = red,
+                                contentColor = black
+                            )
                         ) {
                             Text(
                                 text = "-1"
@@ -228,7 +251,11 @@ fun Counters(modifier: Modifier) {
                             onClick = {
                                 scooter++
                                 total++
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = green,
+                                contentColor = black,
+                            )
                         ) {
                             Text(
                                 text = "+1"
@@ -240,7 +267,11 @@ fun Counters(modifier: Modifier) {
                                     scooter -= 1
                                     if (total > 0) total -= 1
                                 }
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = red,
+                                contentColor = black
+                            )
                         ) {
                             Text(
                                 text = "-1"
@@ -281,7 +312,11 @@ fun Counters(modifier: Modifier) {
                             onClick = {
                                 car++
                                 total++
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = green,
+                                contentColor = black,
+                            )
                         ) {
                             Text(
                                 text = "+1"
@@ -293,7 +328,11 @@ fun Counters(modifier: Modifier) {
                                     car -= 1
                                     if (total > 0) total -= 1
                                 }
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = red,
+                                contentColor = black
+                            )
                         ) {
                             Text(
                                 text = "-1"
@@ -318,6 +357,29 @@ fun Counters(modifier: Modifier) {
 
 
             }
+
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+        Column {
+
+            Button(
+                onClick ={
+                    person = (0..10).random()
+                    bicycle =  (0..10).random()
+                    scooter =  (0..10).random()
+                    car =  (0..10).random()
+                    total = person+bicycle+scooter+car
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = gold,
+                    contentColor = black
+                )
+            ) {
+                Text(
+                text = "Randomize",
+                fontSize = 23.sp
+
+            ) }
         }
 
     }
