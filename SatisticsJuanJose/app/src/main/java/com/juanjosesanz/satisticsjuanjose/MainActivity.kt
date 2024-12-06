@@ -56,7 +56,7 @@ fun Counters(modifier: Modifier) {
 
     fun calculatePercent(count: Int): String {
         return if (total > 0) {
-            String.format("%.2f", (count.toFloat() / total) * 100)  + "%"
+            String.format("%.2f", (count.toFloat() / total) * 100) + "%"
         } else {
             "%0"
         }
@@ -363,12 +363,12 @@ fun Counters(modifier: Modifier) {
         Column {
 
             Button(
-                onClick ={
+                onClick = {
                     person = (0..10).random()
-                    bicycle =  (0..10).random()
-                    scooter =  (0..10).random()
-                    car =  (0..10).random()
-                    total = person+bicycle+scooter+car
+                    bicycle = (0..10).random()
+                    scooter = (0..10).random()
+                    car = (0..10).random()
+                    total = person + bicycle + scooter + car
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = gold,
@@ -376,10 +376,11 @@ fun Counters(modifier: Modifier) {
                 )
             ) {
                 Text(
-                text = "Randomize",
-                fontSize = 23.sp
+                    text = "Randomize",
+                    fontSize = 23.sp
 
-            ) }
+                )
+            }
         }
 
     }
