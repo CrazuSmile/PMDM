@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description1_1">Tienes que adivinar si el siguiente numero del dado</string>
+    <string name="description1_2">sera mayor o menor</string>
+    <string name="points">Puntos: %1$s</string>
+    <string name="roll">Tirada: %1$s</string>
+    <string name="game_over">Has perdido</string>
+    <string name="try_agian">¿Intentar otra vez?</string>
+    <string name="numeric_pad">Gastas 3 puntos, ganas 15</string>
+    <string name="compare_pad">Gastas 1 punto, acierto 3</string>
+    <string name="title">El juego de adivinar</string>
+</resources>
