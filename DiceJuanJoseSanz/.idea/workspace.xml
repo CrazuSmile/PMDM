@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0d0624d4-e97d-43d0-a6e9-11ce2ddf9535" name="Changes" comment="Version 2.1 , ejercicio terminado con comentarios" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;CrazuSmile&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/CrazuSmile/PMDM.git&quot;,
+    &quot;accountId&quot;: &quot;d53eaae8-8bfb-45da-87c2-009aad845b0e&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2p6hzX1ULubbtQtYjlSGWxd4ouK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Kotlin.MainKt.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "UD4",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/juasanlop2/Escriptori/PMDM/PMDM/DiceJuanJoseSanz",
+    "onboarding.tips.debug.path": "/home/juasanlop2/Escriptori/PMDM/PMDM/DiceJuanJoseSanz/src/Main.kt"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0d0624d4-e97d-43d0-a6e9-11ce2ddf9535" name="Changes" comment="" />
+      <created>1732092697422</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732092697422</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Primera version del ejercicio">
+      <option name="closed" value="true" />
+      <created>1732095927391</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1732095927391</updated>
+    </task>
+    <task id="LOCAL-00002" summary="2ª version, ejercicio terminado">
+      <option name="closed" value="true" />
+      <created>1732618825772</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732618825772</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Version 2.1 , ejercicio terminado con comentarios">
+      <option name="closed" value="true" />
+      <created>1732619084518</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1732619084518</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Primera version del ejercicio" />
+    <MESSAGE value="2ª version, ejercicio terminado" />
+    <MESSAGE value="Version 2.1 , ejercicio terminado con comentarios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 2.1 , ejercicio terminado con comentarios" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/DiceJuanJoseSanz$MainKt.ic" NAME="MainKt Coverage Results" MODIFIED="1732095132837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+  </component>
+</project>

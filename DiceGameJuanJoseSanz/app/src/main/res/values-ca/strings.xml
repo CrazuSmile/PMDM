@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description1_1">Has d\'endevinar si el següent numere del dau</string>
+    <string name="description1_2">sàrria major o menor</string>
+    <string name="points">Punts: %1$s</string>
+    <string name="roll">Tirada: %1$s</string>
+    <string name="game_over">Has perdut</string>
+    <string name="try_agian">Intentar una altra vegada?</string>
+    <string name="numeric_pad">Gastes 3 punts, ganes 15</string>
+    <string name="compare_pad">Gastes 1 punts, ganes 3</string>
+    <string name="title">El joc d\'endevinar</string>
+</resources>

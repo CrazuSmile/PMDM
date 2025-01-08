@@ -7,6 +7,7 @@
 fun main() {
     var array: Array<Int> = arrayOf()
     do {
+
         array += inputArray()
 
         println("Numeros pares del Array: ")
@@ -26,6 +27,7 @@ fun main() {
 }
 
 // Añadir nuevos datos al Array
+
 fun inputArray(): Array<Int> {
     var newArray: Array<Int> = arrayOf()
     while (true) {
@@ -44,6 +46,7 @@ fun inputArray(): Array<Int> {
 }
 
 // Comprueba cuales son pares
+
 fun pair(array: Array<Int>) {
     for (i in array.indices) {
         if (array[i] % 2f == 0f) {

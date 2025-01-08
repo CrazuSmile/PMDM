@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">The Guess Roll Game</string>
+    <string name="description1_1">You have to guess if the next number on the die</string>
+    <string name="description1_2">will be higher or lower.</string>
+    <string name="points">Points: %1$s</string>
+    <string name="roll">Roll: %1$s</string>
+    <string name="game_over">Game over</string>
+    <string name="try_agian">Try agian?</string>
+    <string name="numeric_pad">You spend 3 points, you gain 15</string>
+    <string name="compare_pad">You spend 1 points, you gain 3</string>
+    <string name="app_name" translatable="false">DiceGameJuanJoseSanz</string>
+</resources>
