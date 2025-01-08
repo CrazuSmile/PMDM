@@ -5,12 +5,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.juanjosesanz.signinjuanjosesanz.ui.screens.SignIn
-import com.juanjosesanz.signinjuanjosesanz.ui.theme.SignInEnhancedTheme
+import com.juanjosesanz.signinjuanjosesanz.ui.theme.SignInJuanJoseSanzTheme
 
 @Composable
 fun SignInContent(content: @Composable (modifier: Modifier) -> Unit) {
-    SignInEnhancedTheme {
+    SignInJuanJoseSanzTheme {
         Scaffold(
             modifier = Modifier.fillMaxSize()
         ) { innerPadding ->
