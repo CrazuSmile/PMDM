@@ -1,5 +1,5 @@
 /*
- * Progama de matrices del ejercicio 5
+ * Programa de matrices para mostrar los pares añadidos por teclado del ejercicio 5
  * @author Juan Jose Sanz
  * @version 1
  */
@@ -7,7 +7,8 @@
 fun main() {
     var array: Array<Int> = arrayOf()
     do {
-        array += inputArray(array)
+
+        array += inputArray()
 
         println("Numeros pares del Array: ")
         pair(array)
@@ -26,8 +27,9 @@ fun main() {
 }
 
 // Añadir nuevos datos al Array
-fun inputArray(array: Array<Int>): Array<Int> {
-    var newArray = array
+
+fun inputArray(): Array<Int> {
+    var newArray: Array<Int> = arrayOf()
     while (true) {
         println("Introduzca un numero (introduzca 'fin' para finalizar el Array)")
         val input = readln()
@@ -43,7 +45,8 @@ fun inputArray(array: Array<Int>): Array<Int> {
     return newArray
 }
 
-// Comprueba cualos son pares
+// Comprueba cuales son pares
+
 fun pair(array: Array<Int>) {
     for (i in array.indices) {
         if (array[i] % 2f == 0f) {
