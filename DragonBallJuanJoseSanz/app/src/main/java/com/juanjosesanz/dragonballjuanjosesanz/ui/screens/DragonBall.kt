@@ -31,6 +31,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.juanjosesanz.dragonballjuanjosesanz.R
+import com.juanjosesanz.dragonballjuanjosesanz.model.DragonBallCharacter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,6 +39,7 @@ fun DragonBall() {
     val orange = Color(0xFFF89F02)
     val green = Color(0xFF8BC34A)
     val lightOrange = Color(0xFFFFBB56)
+    val dragonBallCharacter = DragonBallCharacter
 
 
     var boxState by rememberSaveable { mutableStateOf(false) }
@@ -85,7 +87,7 @@ fun DragonBall() {
         ) {
             Box() {
                 LazyColumn {
-
+                    val groupCharacter = Map<Char, List<String>> = dragonBallCharacter.sorted().groupBy{it:[0]}
                 }
                 if (boxState) {
                     Box(
