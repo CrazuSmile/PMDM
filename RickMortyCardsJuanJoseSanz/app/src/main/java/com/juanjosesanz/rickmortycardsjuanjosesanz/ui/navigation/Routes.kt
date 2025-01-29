@@ -18,4 +18,4 @@ object Onboarding3
 object Onboarding4
 
 @Serializable
-object MainScreen
+object Main
