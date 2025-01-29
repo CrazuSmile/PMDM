@@ -1,6 +1,5 @@
 package com.juanjosesanz.rickmortycardsjuanjosesanz.ui.screens
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -55,6 +54,7 @@ fun Onboarding2Screen(navController: NavController) {
             IconButton(
                 onClick = {
                     navController.navigate(Onboarding3)
+
                 }
             ) {
                 Icon(
@@ -65,6 +65,7 @@ fun Onboarding2Screen(navController: NavController) {
             TextButton(
                 onClick = {
                     navController.navigate(Onboarding4)
+
                 }
             ) {
                 Text("Skip")

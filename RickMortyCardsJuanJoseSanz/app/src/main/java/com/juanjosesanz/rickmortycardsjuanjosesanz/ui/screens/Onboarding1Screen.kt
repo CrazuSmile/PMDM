@@ -1,6 +1,5 @@
 package com.juanjosesanz.rickmortycardsjuanjosesanz.ui.screens
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

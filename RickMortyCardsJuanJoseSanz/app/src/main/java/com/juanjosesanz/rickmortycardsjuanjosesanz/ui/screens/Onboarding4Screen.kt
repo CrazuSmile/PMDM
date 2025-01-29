@@ -24,6 +24,12 @@ import com.juanjosesanz.rickmortycardsjuanjosesanz.ui.navigation.Onboarding1
 fun Onboarding4Screen(navController: NavController) {
     var textFieldValue by rememberSaveable { mutableStateOf("") }
 
+    fun notValid(textFieldValue: String): Boolean {
+        return textFieldValue.isNotBlank() && !textFieldValue.any { it.isDigit() }
+    }
+
+    val buttonEnabled = notValid(textFieldValue)
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -34,12 +40,16 @@ fun Onboarding4Screen(navController: NavController) {
             label = { Text("Your name") },
             onValueChange = { textFieldValue = it },
         )
+        if (textFieldValue.any { it.isDigit() }) {
+            Text(
+                "Please insert a name without digits."
+            )
+        }
         Spacer(Modifier.padding(10.dp))
 
         Button(
-            enabled = textFieldValue != "",
+            enabled = buttonEnabled,
             onClick = {
-
                 navController.navigate(Main)
             }
         ) {
@@ -50,7 +60,11 @@ fun Onboarding4Screen(navController: NavController) {
         Spacer(Modifier.padding(20.dp))
         Button(
             onClick = {
-                navController.navigate(Onboarding1)
+                navController.navigate(Onboarding1) {
+                    popUpTo<Onboarding1> {
+                        inclusive = true
+                    }
+                }
             }
         ) {
             Text(
