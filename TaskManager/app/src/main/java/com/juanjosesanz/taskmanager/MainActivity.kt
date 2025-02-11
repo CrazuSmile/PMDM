@@ -6,8 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import com.juanjosesanz.taskmanager.navigation.Navigation
-import com.juanjosesanz.taskmanager.ui.theme.TaskManagerTheme
+import com.juanjosesanz.taskmanager.tasks.ui.viewmodel.OnBoardingTaskViewModel
 import com.juanjosesanz.taskmanager.tasks.ui.viewmodel.TaskViewModel
+import com.juanjosesanz.taskmanager.ui.theme.TaskManagerTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +17,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             TaskManagerTheme {
                 val taskViewModel by viewModels<TaskViewModel>()
-                Navigation(taskViewModel)
+                val onBoardingTaskViewModel by viewModels<OnBoardingTaskViewModel>()
+                Navigation(taskViewModel, onBoardingTaskViewModel)
             }
         }
     }

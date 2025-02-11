@@ -1,5 +1,6 @@
 package com.juanjosesanz.taskmanager.ui.screens
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -38,9 +39,19 @@ fun SplashScreen(navController: NavHostController, taskViewModel: TaskViewModel)
 
     LaunchedEffect(key1 = true) {
         delay(5000)
-        taskViewModel.getAllTasks()
-        navController.popBackStack() // Evitar volver a la Splash Screen
-        navController.navigate(Routes.Main)
+        taskViewModel.loadKeyValue {
+            if (taskViewModel.username.value?.isNotEmpty() == true) {
+                Log.i("->", "Funciona")
+                taskViewModel.getAllTasks()
+                navController.popBackStack() // Evitar volver a la Splash Screen
+                navController.navigate(Routes.Main)
+            } else {
+                Log.i("->", "Funciona")
+
+                navController.popBackStack()
+                navController.navigate(Routes.OnBoarding)
+            }
+        }
     }
 }
 
@@ -48,7 +59,7 @@ fun SplashScreen(navController: NavHostController, taskViewModel: TaskViewModel)
 fun Splash() {
     var animateAlpha by rememberSaveable { mutableStateOf(false) }
     val alpha by animateFloatAsState(
-        targetValue = if(animateAlpha) 1f else 0f,
+        targetValue = if (animateAlpha) 1f else 0f,
         animationSpec = tween(
             durationMillis = 3000
         ),
@@ -72,7 +83,7 @@ fun Splash() {
             fontWeight = FontWeight.Bold
         )
         Image(
-            painter = painterResource(id= R.drawable.author),
+            painter = painterResource(id = R.drawable.author),
             contentDescription = "Rick Sanchez",
             modifier = Modifier
                 .size(200.dp, 200.dp)
@@ -86,7 +97,7 @@ fun Splash() {
         )
         AnimatedVisibility(visible = greetingVisible) {
             Text(
-                text ="By Juan Jose Sanz",
+                text = "By Juan Jose Sanz",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )

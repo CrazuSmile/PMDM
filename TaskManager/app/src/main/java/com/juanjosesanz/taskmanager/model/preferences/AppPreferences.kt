@@ -10,21 +10,21 @@ import kotlinx.coroutines.flow.map
 
 object AppPreferences {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "preferences")
-    private val KEY_VALUE = stringPreferencesKey("KEY_VALUE")
+    private val USERNAME_VALUE = stringPreferencesKey("USER_VALUE")
 
-    fun loadKeyValue(context: Context) = context.dataStore.data.map { preferences ->
-        preferences[KEY_VALUE] ?: ""
+    fun loadUsernameValue(context: Context) = context.dataStore.data.map { preferences ->
+        preferences[USERNAME_VALUE] ?: ""
     }
 
-    suspend fun saveKeyValue(context: Context, name: String) {
+    suspend fun saveUsernameValue(context: Context, name: String) {
         context.dataStore.edit { preferences ->
-            preferences[KEY_VALUE] = name
+            preferences[USERNAME_VALUE] = name
         }
     }
 
-    suspend fun removeKeyValue(context: Context) {
+    suspend fun removeUsernameValue(context: Context) {
         context.dataStore.edit { preferences ->
-            preferences.remove(KEY_VALUE)
+            preferences.remove(USERNAME_VALUE)
         }
     }
 }

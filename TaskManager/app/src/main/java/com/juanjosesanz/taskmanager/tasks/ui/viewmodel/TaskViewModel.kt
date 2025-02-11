@@ -15,10 +15,28 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TaskViewModel(application: Application) : AndroidViewModel(application) {
+    val context = application
 
-    private val taskDAO: TaskDAO = TasksDatabase.getInstance(application, "").taskDAO()
-    private val repository = TaskRepository(taskDAO)
-    private val taskUseCase = TaskUseCase(repository)
+    private val _username = MutableLiveData<String>()
+    val username: LiveData<String> = _username
+
+    fun loadKeyValue(onResult: (Boolean) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            AppPreferences.loadUsernameValue(context).collect {
+                _username.postValue(it)
+                onResult(true)
+            }
+        }
+    }
+
+    private lateinit var  taskUseCase: TaskUseCase
+
+    fun initDataBase(username: String){
+        val taskDAO: TaskDAO = TasksDatabase.getInstance(context, username).taskDAO()
+        val repository = TaskRepository(taskDAO)
+        taskUseCase = TaskUseCase(repository)
+    }
+
 
     // Se crea un LiveData para la lista de tareas
     var taskList: LiveData<MutableList<Task>> = MutableLiveData()
