@@ -1,6 +1,7 @@
 package com.juanjosesanz.taskmanager.tasks.domain.usecase
 
 import androidx.lifecycle.LiveData
+import com.juanjosesanz.taskmanager.tasks.data.local.entities.TaskEntity
 import com.juanjosesanz.taskmanager.tasks.data.repository.TaskRepository
 import com.juanjosesanz.taskmanager.tasks.domain.model.Task
 
@@ -23,6 +24,10 @@ class TaskUseCase(private val repository: TaskRepository) {
 
     suspend fun updateTask(task: Task) {
         repository.updateTask(task)
+    }
+
+    suspend fun getTaskById(taskId: Int): Task {
+        return repository.getTaskById(taskId)
     }
 }
 

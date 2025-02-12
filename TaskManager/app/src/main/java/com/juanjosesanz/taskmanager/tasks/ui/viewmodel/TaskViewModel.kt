@@ -77,11 +77,26 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     // Función que actualiza una tarea de la base de datos.
-    fun updateTask(task: Task, isDone: Boolean) {
+    fun updateTask(task: Task, isDone: Boolean, newDescription: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            taskUseCase.updateTask(task.copy(isDone = isDone))
+            taskUseCase.updateTask(task.copy(isDone = isDone, description = newDescription))
         }
     }
+
+
+    private val _selectedTask = MutableLiveData<Task>()
+    val selectedTask: LiveData<Task> = _selectedTask
+
+    fun getTaskById(taskId: Int) {
+        viewModelScope.launch {
+            val task = withContext(Dispatchers.IO) {
+                taskUseCase.getTaskById(taskId)
+            }
+            _selectedTask.value = task
+        }
+    }
+
+
 }
 
 

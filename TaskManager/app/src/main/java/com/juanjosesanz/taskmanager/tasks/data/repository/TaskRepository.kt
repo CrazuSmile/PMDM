@@ -8,7 +8,7 @@ import com.juanjosesanz.taskmanager.tasks.domain.model.Task
 
 class TaskRepository(private val taskDAO: TaskDAO) {
     val tasks: LiveData<MutableList<Task>> = taskDAO.getAllTasks().map { items ->
-        items.map { taskEntity->
+        items.map { taskEntity ->
             Task(
                 id = taskEntity.id,
                 name = taskEntity.name,
@@ -24,8 +24,28 @@ class TaskRepository(private val taskDAO: TaskDAO) {
         taskDAO.addTask(TaskEntity(name = task.name))
     }
 
-    suspend fun deleteTask(task: Task) = taskDAO.deleteTask(TaskEntity(id = task.id, name = task.name))
+    suspend fun deleteTask(task: Task) =
+        taskDAO.deleteTask(TaskEntity(id = task.id, name = task.name))
 
-    suspend fun updateTask(task: Task) = taskDAO.updateTask(TaskEntity(id = task.id, name = task.name, isDone = task.isDone, description = task.description))
+    suspend fun updateTask(task: Task) = taskDAO.updateTask(
+        TaskEntity(
+            id = task.id,
+            name = task.name,
+            isDone = task.isDone,
+            description = task.description
+        )
+    )
+
+    suspend fun getTaskById(taskId: Int): Task {
+        val taskEntity = taskDAO.getTaskById(taskId)
+        return taskEntity.let {
+            Task(
+                id = it.id,
+                name = it.name,
+                isDone = it.isDone,
+                description = it.description
+            )
+        }
+    }
 }
 

@@ -11,6 +11,11 @@ sealed class Routes {
 
     @Serializable
     object OnBoarding
+
+    @Serializable
+    data class TaskInfo (
+        val id: Int
+    )
 }
 
 

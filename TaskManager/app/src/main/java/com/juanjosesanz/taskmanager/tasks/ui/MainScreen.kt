@@ -40,6 +40,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.juanjosesanz.taskmanager.navigation.Routes
 import com.juanjosesanz.taskmanager.tasks.domain.model.Task
 import com.juanjosesanz.taskmanager.tasks.ui.viewmodel.MainScreenViewModel
 import com.juanjosesanz.taskmanager.tasks.ui.viewmodel.TaskViewModel
@@ -113,13 +114,19 @@ fun MainScreen(taskViewModel: TaskViewModel, navController: NavController) {
                             it.id
                         }
                     ) { task ->
-                        TaskItem(task = task,
+                        TaskItem(
+                            task = task,
                             onUpdate = { isEnded ->
-                                taskViewModel.updateTask(task, isEnded)
+                                taskViewModel.updateTask(
+                                    task = task,
+                                    isDone = isEnded,
+                                    newDescription = task.description
+                                )
                             },
                             onDelete = {
                                 taskViewModel.deleteTask(task)
-                            }
+                            },
+                            navController = navController
                         )
                     }
                 }
@@ -166,6 +173,7 @@ fun TaskItem(
     task: Task,
     onUpdate: (Boolean) -> Unit,
     onDelete: () -> Unit,
+    navController: NavController
 ) {
     var showDeleteIcon by rememberSaveable { mutableStateOf(false) }
     ListItem(
@@ -185,6 +193,11 @@ fun TaskItem(
                     },
                     onPress = {
                         showDeleteIcon = false
+                        navController.navigate(
+                            Routes.TaskInfo(
+                                task.id
+                            )
+                        )
                     }
                 )
             },
