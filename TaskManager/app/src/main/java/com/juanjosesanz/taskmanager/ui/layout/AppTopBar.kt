@@ -1,10 +1,11 @@
-package com.juanjosesanz.taskmanager.ui.screens.layout
+package com.juanjosesanz.taskmanager.ui.layout
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Archive
 import androidx.compose.material.icons.filled.TaskAlt
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,6 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.juanjosesanz.taskmanager.navigation.Routes
+import com.juanjosesanz.taskmanager.tasks.ui.viewmodel.TaskViewModel
 
 // Componente propio para la TopAppBar del Scaffold usado en la APP
 
@@ -26,7 +31,9 @@ import androidx.compose.ui.unit.sp
 fun AppTopBar(
     showBackArrow: Boolean = false,
     onClickBlackArrow: () -> Unit,
+    navController: NavController
 ) {
+    val taskViewModel: TaskViewModel = viewModel()
     CenterAlignedTopAppBar(
         title = {
             Row(
@@ -60,7 +67,22 @@ fun AppTopBar(
         colors = TopAppBarDefaults.largeTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
             titleContentColor = MaterialTheme.colorScheme.onPrimary
-        )
+        ),
+        actions = {
+            IconButton(
+                onClick = {
+                    taskViewModel.deleteUsername()
+                    navController.navigate(Routes.OnBoarding) {
+                        popUpTo(Routes.Main) { inclusive = true }
+                    }
+                }
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Archive,
+                    contentDescription = "Exit"
+                )
+            }
+        }
     )
 }
 

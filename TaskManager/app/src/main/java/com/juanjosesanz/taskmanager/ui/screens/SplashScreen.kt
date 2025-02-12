@@ -1,6 +1,5 @@
 package com.juanjosesanz.taskmanager.ui.screens
 
-import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -39,18 +38,13 @@ fun SplashScreen(navController: NavHostController, taskViewModel: TaskViewModel)
 
     LaunchedEffect(key1 = true) {
         delay(5000)
-        taskViewModel.loadKeyValue {
-            if (taskViewModel.username.value?.isNotEmpty() == true) {
-                Log.i("->", "Funciona")
-                taskViewModel.getAllTasks()
-                navController.popBackStack() // Evitar volver a la Splash Screen
-                navController.navigate(Routes.Main)
-            } else {
-                Log.i("->", "Funciona")
+        val existUser = taskViewModel.loadUsername()
+        navController.popBackStack()
 
-                navController.popBackStack()
-                navController.navigate(Routes.OnBoarding)
-            }
+        if (existUser) {
+            navController.navigate(Routes.Main)
+        } else {
+            navController.navigate(Routes.OnBoarding)
         }
     }
 }

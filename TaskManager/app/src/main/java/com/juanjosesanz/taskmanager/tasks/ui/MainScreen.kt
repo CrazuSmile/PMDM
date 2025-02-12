@@ -39,14 +39,22 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.juanjosesanz.taskmanager.tasks.domain.model.Task
-import com.juanjosesanz.taskmanager.ui.screens.layout.AppScaffold
 import com.juanjosesanz.taskmanager.tasks.ui.viewmodel.MainScreenViewModel
 import com.juanjosesanz.taskmanager.tasks.ui.viewmodel.TaskViewModel
+import com.juanjosesanz.taskmanager.ui.screens.layout.AppScaffold
 
 @Composable
-fun MainScreen(taskViewModel: TaskViewModel) {
-    AppScaffold { // Uso del Scaffold personalizado
+fun MainScreen(taskViewModel: TaskViewModel, navController: NavController) {
+
+    val username = taskViewModel.username.value
+    if (username != null) {
+        taskViewModel.initDataBase(username)
+    }
+    taskViewModel.getAllTasks()
+
+    AppScaffold(navController = navController) { // Uso del Scaffold personalizado
         val taskList by taskViewModel.taskList.observeAsState(emptyList())
         val mainScreenViewModel = remember { MainScreenViewModel() }
         val inputTaskName by mainScreenViewModel.taskName.observeAsState(initial = "")
@@ -126,9 +134,11 @@ fun MainScreen(taskViewModel: TaskViewModel) {
                     contentAlignment = Alignment.Center
                 ) {
 
-                    Box(modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color(0xccFFFFFF)))
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color(0xccFFFFFF))
+                    )
                     Column(
                         modifier = Modifier
                             .clip(RoundedCornerShape(20.dp))
@@ -177,8 +187,7 @@ fun TaskItem(
                         showDeleteIcon = false
                     }
                 )
-            }
-        ,
+            },
         colors = ListItemDefaults.colors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
         ),

@@ -12,6 +12,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.juanjosesanz.taskmanager.ui.layout.AppTopBar
 
 // Componente propio para tener un Scaffold unificado en toda la aplicación
 
@@ -19,13 +21,15 @@ import androidx.compose.ui.unit.dp
 fun AppScaffold(
     showBackArrow: Boolean = false,
     onBlackArrowClick: () -> Unit = {},
-    content: @Composable () -> Unit
+    navController: NavController,
+    content: @Composable () -> Unit,
 ) {
     Scaffold(
         topBar = {
             AppTopBar(
                 showBackArrow = showBackArrow,
                 onClickBlackArrow = onBlackArrowClick,
+                navController = navController
             )
         },
     ) { paddingValues ->
@@ -44,9 +48,11 @@ fun AppScaffold(
                     .background(MaterialTheme.colorScheme.onPrimary)
                     .height(2.dp)
             )
-            AuthorInfo(modifier = Modifier
-                .padding(vertical = 4.dp)
-                .weight(1f))
+            AuthorInfo(
+                modifier = Modifier
+                    .padding(vertical = 4.dp)
+                    .weight(1f)
+            )
         }
     }
 }

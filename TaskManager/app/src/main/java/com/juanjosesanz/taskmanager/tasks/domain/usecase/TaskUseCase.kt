@@ -10,7 +10,7 @@ class TaskUseCase(private val repository: TaskRepository) {
     }
 
     suspend fun addTask(task: String) {
-        repository.addTask(Task(name= task, description = ""))
+        repository.addTask(Task(name = task, description = ""))
     }
 
     suspend fun taskExists(name: String): Boolean {

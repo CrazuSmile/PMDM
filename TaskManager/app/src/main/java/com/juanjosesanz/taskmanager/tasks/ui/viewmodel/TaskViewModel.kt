@@ -12,26 +12,34 @@ import com.juanjosesanz.taskmanager.tasks.data.repository.TaskRepository
 import com.juanjosesanz.taskmanager.tasks.domain.model.Task
 import com.juanjosesanz.taskmanager.tasks.domain.usecase.TaskUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class TaskViewModel(application: Application) : AndroidViewModel(application) {
     val context = application
 
     private val _username = MutableLiveData<String>()
-    val username: LiveData<String> = _username
 
-    fun loadKeyValue(onResult: (Boolean) -> Unit) {
-        viewModelScope.launch(Dispatchers.IO) {
-            AppPreferences.loadUsernameValue(context).collect {
-                _username.postValue(it)
-                onResult(true)
-            }
+    suspend fun loadUsername(): Boolean {
+        return withContext(Dispatchers.IO) {
+            AppPreferences.loadUsernameValue(context).firstOrNull()?.isNotEmpty() ?: false
+        }.also {
+            _username.postValue(AppPreferences.loadUsernameValue(context).firstOrNull() ?: "")
         }
     }
 
-    private lateinit var  taskUseCase: TaskUseCase
+    val username: LiveData<String> = _username
 
-    fun initDataBase(username: String){
+    fun deleteUsername() {
+        viewModelScope.launch(Dispatchers.IO) {
+            AppPreferences.removeUsernameValue(context)
+        }
+    }
+
+    private lateinit var taskUseCase: TaskUseCase
+
+    fun initDataBase(username: String) {
         val taskDAO: TaskDAO = TasksDatabase.getInstance(context, username).taskDAO()
         val repository = TaskRepository(taskDAO)
         taskUseCase = TaskUseCase(repository)

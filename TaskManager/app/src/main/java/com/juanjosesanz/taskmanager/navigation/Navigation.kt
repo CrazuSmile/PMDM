@@ -7,7 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.juanjosesanz.taskmanager.tasks.ui.MainScreen
 import com.juanjosesanz.taskmanager.tasks.ui.viewmodel.OnBoardingTaskViewModel
 import com.juanjosesanz.taskmanager.tasks.ui.viewmodel.TaskViewModel
-import com.juanjosesanz.taskmanager.ui.onboarding.OnBoardingScreen
+import com.juanjosesanz.taskmanager.ui.screens.OnBoardingScreen
 import com.juanjosesanz.taskmanager.ui.screens.SplashScreen
 
 
@@ -24,7 +24,7 @@ fun Navigation(taskViewModel: TaskViewModel, onBoardingTaskViewModel: OnBoarding
         }
 
         composable<Routes.Main> {
-            MainScreen(taskViewModel)
+            MainScreen(taskViewModel, navController)
         }
 
         composable<Routes.OnBoarding> {
